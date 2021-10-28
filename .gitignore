@@ -1,0 +1,5 @@
+/.idea/
+/wj-server/data/
+/wj-server/.mvn/
+/wj-vue/build/
+/wj-vue/package-lock.json
