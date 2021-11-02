@@ -29,12 +29,31 @@
       <i class="el-icon-menu"></i>
       <span slot="title">科学</span>
     </el-menu-item>
+    <el-menu-item index="7">
+      <i class="el-icon-menu"></i>
+      <span slot="title">开发</span>
+    </el-menu-item>
+    <el-menu-item index="8">
+      <i class="el-icon-menu"></i>
+      <span slot="title">架构</span>
+    </el-menu-item>
   </el-menu>
 </template>
 
 <script>
 export default {
-  name: 'SideMenu'
+  name: 'SideMenu',
+  data () {
+    return {
+      cid: ''
+    }
+  },
+  methods: {
+    handleSelect (key, keyPath) {
+      this.cid = key
+      this.$emit('indexSelect')
+    }
+  }
 }
 </script>
 
