@@ -2,10 +2,10 @@
   <el-container>
     <el-aside style="width: 200px; margin-top: 20px">
       <switch></switch>
-      <SideMenu></SideMenu>
+      <SideMenu @indexSelect="listByCategory" ref="sideMenu"></SideMenu>
     </el-aside>
     <el-main>
-      <books class="books-area"></books>
+      <books class="books-area" ref="booksArea"></books>
     </el-main>
   </el-container>
 </template>
@@ -15,7 +15,19 @@ import SideMenu from './SideMenu'
 import Books from './Books'
 export default {
   name: 'AppLibrary',
-  components: {SideMenu, Books}
+  components: {SideMenu, Books},
+  methods: {
+    listByCategory () {
+      const _this = this
+      const cid = this.$refs.sideMenu.cid
+      const url = 'categories/' + cid + '/books'
+      this.$axios.get(url).then(resp => {
+        if (resp && resp.status === 200) {
+          _this.$refs.booksArea.books = resp.data
+        }
+      })
+    }
+  }
 }
 </script>
 
