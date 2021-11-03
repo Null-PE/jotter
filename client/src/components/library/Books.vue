@@ -108,6 +108,9 @@ export default {
           name: item.category.name
         }
       }
+      this.$axios.get('/categories').then(resp => {
+        this.$refs.edit.categories = resp.data
+      })
     }
   }
 }

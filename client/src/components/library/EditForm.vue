@@ -3,8 +3,7 @@
     <i class="el-icon-circle-plus-outline" @click="dialogFormVisible = true"></i>
     <el-dialog
       title="Add/Edit Books"
-      :visible.sync="dialogFormVisible"
-      @close="clear">
+      :visible.sync="dialogFormVisible" @close="clear">
       <el-form v-model="form" style="text-align: left" ref="dataForm">
         <el-form-item label="Title" :label-width="formLabelWidth" prop="title">
           <el-input v-model="form.title" autocomplete="off" placeholder="book title"></el-input>
@@ -24,7 +23,7 @@
         <el-form-item label="Info" :label-width="formLabelWidth" prop="abs">
           <el-input type="textarea" v-model="form.abs" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="Category" :label-width="formLabelWidth" @click="listCategory" prop="cid">
+        <el-form-item label="Category" :label-width="formLabelWidth" prop="cid">
           <el-select v-model="form.category.id" placeholder="select category">
             <el-option v-for="(item, index) in categories" :key="index" :label="item.name" :value="item.id"></el-option>
           </el-select>
@@ -65,13 +64,6 @@ export default {
     }
   },
   methods: {
-    listCategory () {
-      const _this = this
-      const url = 'categories'
-      this.$axios.get(url).then(resp => {
-        _this.categories = resp.data
-      })
-    },
     clear () {
       this.form = {
         id: '',

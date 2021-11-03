@@ -4,7 +4,6 @@ import com.example.server.entity.Book;
 import com.example.server.entity.Category;
 import com.example.server.service.BookService;
 import com.example.server.service.CategoryService;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -15,7 +15,7 @@ public class CategoryService {
     CategoryDAO categoryDAO;
 
     public List<Category> list(){
-        Sort sort = Sort.by(Sort.Direction.DESC, "id");
+        Sort sort = Sort.by(Sort.Direction.ASC, "id");
         return categoryDAO.findAll(sort);
     }
 
