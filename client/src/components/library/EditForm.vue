@@ -19,6 +19,7 @@
         </el-form-item>
         <el-form-item label="Cover" :label-width="formLabelWidth" prop="cover">
           <el-input v-model="form.cover" autocomplete="off" placeholder="Image URL"></el-input>
+          <img-upload @onUpload="uploadImg" ref="imgUpload"></img-upload>
         </el-form-item>
         <el-form-item label="Info" :label-width="formLabelWidth" prop="abs">
           <el-input type="textarea" v-model="form.abs" autocomplete="off"></el-input>
@@ -41,8 +42,10 @@
 </template>
 
 <script>
+import ImgUpload from '../upload/ImgUpload';
 export default {
   name: 'EditForm',
+  components: {ImgUpload},
   data () {
     return {
       categories: [],
@@ -93,6 +96,9 @@ export default {
             this.$emit('onSubmit')
           }
         })
+    },
+    uploadImg () {
+      this.form.cover = this.$refs.imgUpload.url
     }
   }
 }
