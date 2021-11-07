@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.HtmlUtils;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class LoginController {
 
@@ -20,13 +22,14 @@ public class LoginController {
     @CrossOrigin
     @PostMapping(value = "api/login")
     @ResponseBody
-    public Result login(@RequestBody User requestUser) {
+    public Result login(@RequestBody User requestUser, HttpSession session) {
         String username = HtmlUtils.htmlEscape(requestUser.getUsername());
 
         User user = userService.get(username, requestUser.getPassword());
         if (user == null) {
             return new Result(400);
         }
+        session.setAttribute("user", user);
         return new Result(200);
     }
 }
