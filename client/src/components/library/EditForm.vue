@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import ImgUpload from '../upload/ImgUpload';
+import ImgUpload from '../upload/ImgUpload'
 export default {
   name: 'EditForm',
   components: {ImgUpload},

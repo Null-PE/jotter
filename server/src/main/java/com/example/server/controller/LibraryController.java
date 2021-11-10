@@ -4,6 +4,7 @@ import com.example.server.entity.Book;
 import com.example.server.entity.Category;
 import com.example.server.service.BookService;
 import com.example.server.service.CategoryService;
+import com.example.server.util.FileCommon;
 import com.example.server.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -56,8 +57,7 @@ public class LibraryController {
 
     @PostMapping("api/covers")
     public String coverUpload(MultipartFile file) throws Exception {
-        String folder = "./img";
-        File imageFolder = new File(folder);
+        File imageFolder = new File(FileCommon.FILE_PATH);
         File f = new File(imageFolder, StringUtils.getRandomString(6) +
                 file.getOriginalFilename().substring(file.getOriginalFilename().length() - 4));
         if (!f.getParentFile().exists()) {

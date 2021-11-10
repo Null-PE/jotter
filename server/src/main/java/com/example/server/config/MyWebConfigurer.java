@@ -1,6 +1,7 @@
 package com.example.server.config;
 
 import com.example.server.interceptor.LoginInterceptor;
+import com.example.server.util.FileCommon;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -22,6 +23,6 @@ public class MyWebConfigurer implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/api/file/**").addResourceLocations("file:" + "d:/workspace/img/");
+        registry.addResourceHandler("/api/file/**").addResourceLocations("file:" + FileCommon.FILE_PATH);
     }
 }
