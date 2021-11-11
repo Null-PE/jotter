@@ -15,34 +15,34 @@ services:
         restart: always
 
 #   server
-    app:
-        image: adoptopenjdk/openjdk11:alpine
-        container_name: server
-        volumes:
-            -   ./server:/app
+#    app:
+#        image: adoptopenjdk/openjdk11:alpine
+#        container_name: server
+#        volumes:
+#            -   ./server:/app
 #        build:
 #            context: ./server
 #            dockerfile: ./Dockerfile
-        depends_on:
-            -   db
-        ports:
-            -   "8443:8443"
-        restart: always
+#        depends_on:
+#            -   db
+#        ports:
+#            -   "8443:8443"
+#        restart: always
 
 #   client
-    app2:
-        container_name: client
-        build:
-            context: ./client
-            dockerfile: ./Dockerfile
-        ports:
-            - '8080:8080'
-        privileged: true
-        tty: true
-        stdin_open: true
-        command: /bin/sh
-        volumes:
-            -   ./client:/app:cached
-        depends_on:
-            -   db
+#    app2:
+#        container_name: client
+#        build:
+#            context: ./client
+#            dockerfile: ./Dockerfile
+#        ports:
+#            - '8080:8080'
+#        privileged: true
+#        tty: true
+#        stdin_open: true
+#        command: /bin/sh
+#        volumes:
+#            -   ./client:/app:cached
+#        depends_on:
+#            -   db
 
