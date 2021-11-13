@@ -14,35 +14,36 @@ services:
             MYSQL_PASSWORD: passw0rd
         restart: always
 
-#   server
-    app:
-        image: adoptopenjdk/openjdk11:alpine
-        container_name: server
-        volumes:
-            -   ./server:/app
-#        build:
-#            context: ./server
-#            dockerfile: ./Dockerfile
-        depends_on:
-            -   db
-        ports:
-            -   "8443:8443"
-        restart: always
+##   server
+#    app:
+#        image: adoptopenjdk/openjdk11:alpine
+#        container_name: server
+#        volumes:
+#            -   ./server:/app
+##        build:
+##            context: ./server
+##            dockerfile: ./Dockerfile
+#        depends_on:
+#            -   db
+#        ports:
+#            -   "8443:8443"
+#        restart: always
 
 #   client
     app2:
+        image: node:lts-alpine
         container_name: client
-        build:
-            context: ./client
-            dockerfile: ./Dockerfile
+#        build:
+#            context: ./client
+#            dockerfile: ./Dockerfile
+        working_dir: /app
+        volumes:
+            -   ./client:/app
         ports:
-            - '8080:8080'
+            - "8080:8080"
         privileged: true
         tty: true
         stdin_open: true
-        command: /bin/sh
-        volumes:
-            -   ./client:/app:cached
         depends_on:
             -   db
 
