@@ -33,9 +33,6 @@ services:
     app2:
         image: node:lts-alpine
         container_name: client
-#        build:
-#            context: ./client
-#            dockerfile: ./Dockerfile
         working_dir: /app
         volumes:
             -   ./client:/app

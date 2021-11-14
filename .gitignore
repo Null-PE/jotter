@@ -1,5 +1,8 @@
 /.idea/
-/wj-server/data/
-/wj-server/.mvn/
+/server/build/
+/server/.gradle/
 /client/build/
-/client/package-lock.json
+/client/package*.json
+/client/node_modules
+/client/dist
+/Database/data
