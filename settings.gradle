@@ -1,0 +1,3 @@
+rootProject.name = 'jotter'
+include 'server'
+include 'client'
