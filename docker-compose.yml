@@ -31,16 +31,16 @@ services:
 
 #   client
     app2:
-        image: node:lts-alpine
         container_name: client
-        working_dir: /app
-        volumes:
-            -   ./client:/app
-        ports:
-            - "8080:8080"
+        build:
+            context: ./client
+            dockerfile: ./Dockerfile
         privileged: true
         tty: true
         stdin_open: true
         depends_on:
             -   db
+        ports:
+            -   "8080:8080"
+        command: npm run dev
 
