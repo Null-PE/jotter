@@ -15,19 +15,16 @@ services:
         restart: always
 
 ##   server
-#    app:
-#        image: adoptopenjdk/openjdk11:alpine
-#        container_name: server
-#        volumes:
-#            -   ./server:/app
-##        build:
-##            context: ./server
-##            dockerfile: ./Dockerfile
-#        depends_on:
-#            -   db
-#        ports:
-#            -   "8443:8443"
-#        restart: always
+    app:
+        container_name: server
+        build:
+            context: ./server
+            dockerfile: ./Dockerfile
+        depends_on:
+            -   db
+        ports:
+            -   "8443:8443"
+        restart: always
 
 #   client
     app2:
