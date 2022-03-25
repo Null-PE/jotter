@@ -1,31 +1,13 @@
 package com.example.server.service;
 
-import com.example.server.dao.UserDAO;
 import com.example.server.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
-public class UserService {
+public interface UserService {
+    boolean isExist(String username);
 
-    @Autowired
-    UserDAO userDAO;
+    User getByName(String username);
 
-    public boolean isExist(String username) {
-        User user = getByName(username);
-        return user != null;
-    }
+    User get(String username, String password);
 
-    public User getByName(String username) {
-        return userDAO.findByUsername(username);
-    }
-
-    public User get(String username, String password) {
-        return userDAO.getByUsernameAndPassword(username, password);
-    }
-
-    public void add(User user) {
-        userDAO.save(user);
-    }
-
+    void add(User user);
 }

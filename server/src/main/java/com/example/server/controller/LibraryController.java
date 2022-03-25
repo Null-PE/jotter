@@ -6,7 +6,7 @@ import com.example.server.service.BookService;
 import com.example.server.service.CategoryService;
 import com.example.server.util.FileCommon;
 import com.example.server.util.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,13 +16,12 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
+@RequiredArgsConstructor
 public class LibraryController {
 
-    @Autowired
-    BookService bookService;
+    private final BookService bookService;
 
-    @Autowired
-    CategoryService categoryService;
+    private final CategoryService categoryService;
 
     @GetMapping("/api/books")
     public List<Book> list() throws Exception {

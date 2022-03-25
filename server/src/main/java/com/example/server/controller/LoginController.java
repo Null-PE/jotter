@@ -27,9 +27,9 @@ public class LoginController {
 
         User user = userService.get(username, requestUser.getPassword());
         if (user == null) {
-            return new Result(400);
+            return Result.error("用户名或密码错误");
         }
         session.setAttribute("user", user);
-        return new Result(200);
+        return Result.success();
     }
 }
