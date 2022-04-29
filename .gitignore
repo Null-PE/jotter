@@ -1,7 +1,6 @@
 /.idea/
 /server/build/
 /server/.gradle/
-/client/build/
 /client/package*.json
 /client/node_modules
 /client/dist
