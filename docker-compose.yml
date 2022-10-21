@@ -1,17 +1,16 @@
 version: '3.7'
 services:
     db:
-        container_name: dev-db
+        container_name: jotter_db
         image: mysql:latest
         ports:
             - "3306:3306"
         volumes:
             - ./Database/data:/var/lib/mysql
-        environment:
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: DEV_DB
-            MYSQL_USER: admin
-            MYSQL_PASSWORD: passw0rd
+            - ./Database/init/tables.sql:/docker-entrypoint-initdb.d/1.sql
+            - ./Database/init/data.sql:/docker-entrypoint-initdb.d/2.sql
+            - ./Database/my.cnf:/etc/mysql/conf.d/my.cnf
+        env_file: Database/config.env
         restart: always
 
 ##   server
@@ -21,7 +20,7 @@ services:
             context: ./server
             dockerfile: ./Dockerfile
         depends_on:
-            -   db
+            -   jotter_db
         ports:
             -   "8443:8443"
         restart: always
